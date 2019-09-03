@@ -7,15 +7,19 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./cart.component.css']
 })
 
-export class CartComponent implements OnInit {
+export class CartComponent {
   items;
   checkoutForm;
+
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.items = this.cartService.getItems();
+
+    this.checkoutForm = this.formBuilder.group({
+      name: '',
+      address: ''
+    });
   }
 }
